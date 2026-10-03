@@ -229,10 +229,9 @@ Trying `en` at this point asked for the enable password. With the wrong password
 | Telnet right after setting VTY password | Connection refused | Add `transport input all` (or `telnet`) on the VTY lines |
 
 ## Files
-
-- [`R1-config.txt`](configs/R1-config.txt): the final configuration as commands
-- [`session-log.txt`](logs/session-log.txt): terminal session from the lab
-- [`images/telnet.png`](telnet.png): topology diagram
+- [`R1-config.txt`](R1-config.txt): the final configuration as commands
+- [`session-log.txt`](session-log.txt): terminal session from the lab
+- [`telnet.png`](telnet.png): topology diagram
 
 ## Notes
 
