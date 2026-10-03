@@ -4,7 +4,7 @@ Basic router configuration on a Cisco router (R1) in a lab: interface IP address
 
 ## Topology
 
-![Network topology](images/telnet.png)
+![Network topology](TELNET.png)
 
 | Device | Interface | IP Address |
 |--------|-----------|------------|
@@ -232,7 +232,7 @@ Trying `en` at this point asked for the enable password. With the wrong password
 
 - [`configs/R1-config.txt`](configs/R1-config.txt): the final configuration as commands
 - [`logs/session-log.txt`](logs/session-log.txt): terminal session from the lab
-- [`images/telnet.png`](telnet.png): topology diagram
+- [`images/telnet.png`](TELNET.png): topology diagram
 
 ## Notes
 
