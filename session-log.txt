@@ -1,0 +1,116 @@
+! Terminal session (blank prompt lines and typo lines removed)
+
+Router#config t
+Router(config)#do show int brief
+% Invalid input detected at '^' marker.
+
+Router(config)#do show ip int brief
+Interface                  IP-Address      OK? Method Status                Protocol
+Ethernet0/0                unassigned      YES unset  administratively down down
+Ethernet0/1                unassigned      YES unset  administratively down down
+Ethernet0/2                unassigned      YES unset  administratively down down
+Ethernet0/3                unassigned      YES unset  administratively down down
+Serial1/0                  unassigned      YES unset  administratively down down
+Serial1/1                  unassigned      YES unset  administratively down down
+Serial1/2                  unassigned      YES unset  administratively down down
+Serial1/3                  unassigned      YES unset  administratively down down
+
+Router(config)#int e0/0
+Router(config-if)#ip add 10.0.0.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+*Oct  3 06:38:16.474: %LINK-3-UPDOWN: Interface Ethernet0/0, changed state to up
+*Oct  3 06:38:17.479: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to up
+
+Router(config)#int e 0/1
+Router(config-if)#ip add 20.0.0.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+*Oct  3 06:38:51.727: %LINK-3-UPDOWN: Interface Ethernet0/1, changed state to up
+*Oct  3 06:38:52.729: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/1, changed state to up
+
+Router(config)#do sh ip int brief
+Interface                  IP-Address      OK? Method Status                Protocol
+Ethernet0/0                10.0.0.1        YES manual up                    up
+Ethernet0/1                20.0.0.1        YES manual up                    up
+Ethernet0/2                unassigned      YES unset  administratively down down
+Ethernet0/3                unassigned      YES unset  administratively down down
+Serial1/0                  unassigned      YES unset  administratively down down
+Serial1/1                  unassigned      YES unset  administratively down down
+Serial1/2                  unassigned      YES unset  administratively down down
+Serial1/3                  unassigned      YES unset  administratively down down
+
+Router(config)#line con 0
+Router(config-line)#password cisco
+Router(config-line)#login
+Router(config-line)#exit
+Router(config)#line aux 0
+Router(config-line)#password disco
+Router(config-line)#login
+Router(config-line)#exit
+Router(config)#line vty 0 4
+Router(config-line)#password kisko
+Router(config-line)#login
+Router(config-line)#exit
+Router(config)#enable secret sunny
+
+Router(config)#do telnet 10.0.0.1
+Trying 10.0.0.1 ...
+% Connection refused by remote host
+
+Router(config)#exit
+*Oct  3 06:40:57.667: %SYS-5-CONFIG_I: Configured from console by console
+Router#telnet 10.0.0.1
+Trying 10.0.0.1 ...
+% Connection refused by remote host
+
+Router#hostname R1
+% Invalid input detected at '^' marker.
+
+Router#config t
+Router(config)#hostname R1
+R1(config)#do telnet 10.0.0.1
+Trying 10.0.0.1 ...
+% Connection refused by remote host
+
+R1(config)#service password-encryption
+R1(config)#do telnet 10.0.0.1
+Trying 10.0.0.1 ...
+% Connection refused by remote host
+
+R1(config)#do sh ip int brief
+Interface                  IP-Address      OK? Method Status                Protocol
+Ethernet0/0                10.0.0.1        YES manual up                    up
+Ethernet0/1                20.0.0.1        YES manual up                    up
+Ethernet0/2                unassigned      YES unset  administratively down down
+Ethernet0/3                unassigned      YES unset  administratively down down
+Serial1/0                  unassigned      YES unset  administratively down down
+Serial1/1                  unassigned      YES unset  administratively down down
+Serial1/2                  unassigned      YES unset  administratively down down
+Serial1/3                  unassigned      YES unset  administratively down down
+
+R1(config)#do telnet 20.0.0.1
+Trying 20.0.0.1 ...
+% Connection refused by remote host
+
+R1(config)#line vty 0 4
+R1(config-line)#password kisko
+R1(config-line)#login
+R1(config-line)#transport input all
+R1(config-line)#exit
+
+R1(config)#do telnet 10.0.0.1
+Trying 10.0.0.1 ... Open
+
+User Access Verification
+
+Password:
+R1>en
+Password:
+Password:
+Password:
+% Bad secrets
+
+R1>
+[Connection to 10.0.0.1 closed by foreign host]
+R1(config)#

@@ -1,0 +1,33 @@
+! R1 - Telnet lab configuration
+configure terminal
+hostname R1
+!
+interface Ethernet0/0
+ ip address 10.0.0.1 255.255.255.0
+ no shutdown
+ exit
+!
+interface Ethernet0/1
+ ip address 20.0.0.1 255.255.255.0
+ no shutdown
+ exit
+!
+line console 0
+ password cisco
+ login
+ exit
+!
+line aux 0
+ password disco
+ login
+ exit
+!
+line vty 0 4
+ password kisko
+ login
+ transport input all
+ exit
+!
+enable secret sunny
+service password-encryption
+end
